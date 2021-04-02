@@ -1,9 +1,9 @@
 using System;
 namespace Todo.Domain.Entities{
 
-    public class Todo: Entity
+    public class TodoItem: Entity
     {
-        public Todo(string title, DateTime date, string user)
+        public TodoItem(string title, DateTime date, string user)
         {
             Title = title;
             Done = false;

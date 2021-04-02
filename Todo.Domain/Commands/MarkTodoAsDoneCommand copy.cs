@@ -7,7 +7,7 @@ using Todo.Domain.Commands.Contracts;
 
 namespace Todo.Domain.Commands
 {
-    class MarkTodoAsDoneCommand : Notifiable, ICommand
+    public class MarkTodoAsDoneCommand : Notifiable, ICommand
     {
         public MarkTodoAsDoneCommand()
         {
