@@ -11,11 +11,6 @@ namespace Todo.Domain.Tests.Repositories
 
         }
 
-        public object GetById(Guid id, string user)
-        {
-            return new TodoItem("titulo", DateTime.Now,"");
-        }
-
         public void Update(TodoItem todo)
         {
 
@@ -23,7 +18,7 @@ namespace Todo.Domain.Tests.Repositories
 
         TodoItem ITodoRepository.GetById(Guid id, string user)
         {
-            throw new NotImplementedException();
+            return new TodoItem("titulo", DateTime.Now,"");
         }
     }
 }

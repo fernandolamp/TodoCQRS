@@ -10,7 +10,9 @@ namespace Todo.Domain.Handlers
     public class TodoHandler : 
        Notifiable,
        IHandler<CreateTodoCommand>,
-       IHandler<UpdateTodoCommand>
+       IHandler<UpdateTodoCommand>,
+       IHandler<MarkTodoAsDoneCommand>,
+       IHandler<MarkTodoAsUndoneCommand>
     {
         private readonly ITodoRepository _repository;
         public ICommandResult Handle(CreateTodoCommand command)
@@ -38,6 +40,31 @@ namespace Todo.Domain.Handlers
           _repository.Update(todo);
           return new GenericCommandResult(true, "Tarefa salva", todo);
 
+        }
+
+        public ICommandResult Handle(MarkTodoAsDoneCommand command)
+        {
+            command.Validate();
+            if(command.Invalid){
+                return new GenericCommandResult(false,"Comando inválido",command.Notifications);
+            }
+            var todo = _repository.GetById(command.Id,command.User);
+            todo.MarkAsDone();
+            _repository.Update(todo);
+
+            return new GenericCommandResult(true, "Done!",todo);
+        }
+
+        public ICommandResult Handle(MarkTodoAsUndoneCommand command)
+        {
+            command.Validate();
+            if(command.Invalid){
+                return new GenericCommandResult(false,"Comando inválido",command.Notifications);
+            }
+            var todo = _repository.GetById(command.Id,command.User);
+            todo.MarkAsUndone();
+            _repository.Update(todo);
+            return new GenericCommandResult(true, "Done!",todo);
         }
 
         public TodoHandler(ITodoRepository repository)

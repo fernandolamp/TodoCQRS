@@ -7,13 +7,13 @@ using Todo.Domain.Commands.Contracts;
 
 namespace Todo.Domain.Commands
 {
-    public class MarkTodoAsUndone : Notifiable, ICommand
+    public class MarkTodoAsUndoneCommand : Notifiable, ICommand
     {
-        public MarkTodoAsUndone()
+        public MarkTodoAsUndoneCommand()
         {
             
         }
-        public MarkTodoAsUndone(Guid id, string user)
+        public MarkTodoAsUndoneCommand(Guid id, string user)
         {            
             Id = id;
             User = user;
