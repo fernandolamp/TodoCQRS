@@ -48,9 +48,9 @@ namespace Todo.Domain.Api
 
             app.UseHttpsRedirection();
             app.UseCors(x =>
-           x.AllowAnyOrigin()
-           .AllowAnyMethod()
-           .AllowAnyHeader());
+            x.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
             app.UseRouting();
 
